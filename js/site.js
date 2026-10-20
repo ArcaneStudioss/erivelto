@@ -12,9 +12,18 @@
   const topo = d.getElementById('topo'), hero = d.querySelector('.hero__palco');
   if (topo && hero) new IntersectionObserver(es => topo.classList.toggle('is-solido', !es[0].isIntersecting), { rootMargin: '-80px 0px 0px 0px' }).observe(hero);
 
-  // barra de contato fixa no celular, depois que o hero sai da tela
-  const barra = d.querySelector('.barra'), heroSec = d.querySelector('.hero');
-  if (barra && heroSec) new IntersectionObserver(es => { barra.classList.toggle('is-on', !es[0].isIntersecting); barra.setAttribute('aria-hidden', es[0].isIntersecting ? 'true' : 'false'); barra.querySelectorAll('button').forEach(b => b.tabIndex = es[0].isIntersecting ? -1 : 0); }, { threshold: .05 }).observe(heroSec);
+  // botão de WhatsApp no canto: aparece depois que o hero sai da tela
+  const zap = d.querySelector('.zap'), heroSec = d.querySelector('.hero');
+  if (zap && heroSec) new IntersectionObserver(es => { const fora = !es[0].isIntersecting; zap.classList.toggle('is-on', fora); zap.setAttribute('aria-hidden', fora ? 'false' : 'true'); zap.tabIndex = fora ? 0 : -1; }, { threshold: .05 }).observe(heroSec);
+
+  // links de âncora: rolagem suave só no clique (nada de scroll-behavior global, que faz a página "voltar sozinha" no celular)
+  const sem = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  d.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+    const alvo = a.getAttribute('href').length > 1 && d.querySelector(a.getAttribute('href'));
+    if (!alvo) return;
+    e.preventDefault(); alvo.scrollIntoView({ behavior: sem ? 'auto' : 'smooth', block: 'start' });
+    history.replaceState(null, '', a.getAttribute('href'));
+  }));
 
   function initHero() {
     const sec = d.querySelector('.hero'), v = d.querySelector('.hero__video'), bt = d.querySelector('.hero__pausa');
@@ -59,16 +68,20 @@
     const nomeOk = v => v.trim().replace(/[^\p{L}]/gu, '').length >= 2;
     const telOk = v => { const n = digitos(v); return n.length === 10 || (n.length === 11 && n[2] === '9'); };
     const limpa = () => Object.values(campos).forEach(el => marca(el, false));
+    // trava a rolagem de fundo guardando a posição (html overflow:hidden faz a página pular no celular)
+    let yTrava = 0;
+    const trava = () => { yTrava = scrollY; const s = d.body.style; s.position = 'fixed'; s.top = `-${yTrava}px`; s.left = '0'; s.right = '0'; };
+    const solta = () => { const s = d.body.style; if (s.position !== 'fixed') return; s.position = s.top = s.left = s.right = ''; scrollTo({ top: yTrava, behavior: 'instant' }); };
     const abrir = (b, casa) => {
       origem = b; imovel = casa || ''; limpa();
       interesse.hidden = !imovel; interesse.textContent = imovel ? 'Imóvel: ' + imovel : '';
       if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
-      d.documentElement.style.overflow = 'hidden';
+      trava();
     };
     d.querySelectorAll('[data-abrir-conversa]').forEach(b => b.addEventListener('click', () => abrir(b, '')));
     d.querySelectorAll('[data-interesse]').forEach(b => b.addEventListener('click', () => abrir(b, b.dataset.interesse)));
     const fechar = () => { dlg.close ? dlg.close() : dlg.removeAttribute('open'); };
-    dlg.addEventListener('close', () => { d.documentElement.style.overflow = ''; origem && origem.focus(); });
+    dlg.addEventListener('close', () => { solta(); origem && origem.focus({ preventScroll: true }); });
     dlg.querySelector('[data-fechar]').addEventListener('click', fechar);
     dlg.addEventListener('click', e => { if (e.target === dlg) fechar(); });
     form.tel.addEventListener('input', () => {

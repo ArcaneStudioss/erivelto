@@ -17,7 +17,7 @@
   color-scheme:dark;
 }
 *{box-sizing:border-box;margin:0}
-html{overscroll-behavior-y:none;scroll-behavior:smooth}
+html{overscroll-behavior-y:none;overflow-anchor:none}
 body{background:var(--noite);color:var(--tinta);font-family:Geist,system-ui,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:clip}
 img{display:block;max-width:100%;height:auto}
 a{color:inherit}
@@ -109,7 +109,7 @@ section{scroll-margin-top:64px}
 .marca--rodape .marca__nome{font-size:13px}
 
 /* ---- janela de conversa (modal) ---- */
-.conversa{border:0;padding:0;background:none;color:var(--tinta);max-width:none;width:100%;max-height:100dvh;margin:auto 0 0}
+.conversa{border:0;padding:0;background:none;color:var(--tinta);max-width:none;width:100%;max-height:100dvh;margin:auto 0 0;overflow-y:auto;overscroll-behavior:contain}
 .conversa::backdrop{background:rgba(4,10,22,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 .conversa[open]{animation:sobe .45s var(--ease)}
 @keyframes sobe{from{transform:translateY(40px);opacity:0}}
@@ -169,7 +169,7 @@ section{scroll-margin-top:64px}
   .conversa__in{border-radius:24px;padding:36px}
 }
 @media (pointer:coarse){.btn--vidro{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(11,27,56,.65)}}
-@media (prefers-reduced-motion:reduce){.pulso{animation:none}html{scroll-behavior:auto}}
+@media (prefers-reduced-motion:reduce){.pulso{animation:none}}
 
 /* ================= refinamento v2 ================= */
 .hero__titulo,.imoveis h2,.sobre h2,.caminho h2,.contato h2,.card h3,.etapas h3,.conversa h2{font-family:var(--serif);font-weight:400;letter-spacing:-.005em}
@@ -198,18 +198,19 @@ section{scroll-margin-top:64px}
 .sobre__foto img{box-shadow:0 0 0 10px rgba(212,175,95,.08),0 30px 60px -30px rgba(0,0,0,.7)}
 .etapa__n{font-family:var(--serif);font-size:20px}
 .rodape .marca__nome{color:var(--grafite)}
-/* barra fixa no celular: aparece depois do hero */
-.barra{position:fixed;z-index:45;left:0;right:0;bottom:0;display:flex;gap:8px;padding:10px var(--pad) calc(10px + env(safe-area-inset-bottom));background:rgba(11,27,56,.92);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-top:1px solid var(--linha);transform:translateY(110%);transition:transform .4s var(--ease)}
-.barra .btn{flex:1;min-height:46px;padding:0 12px;font-size:15px}
-.barra.is-on{transform:none}
+/* botão de WhatsApp no canto: aparece depois do hero */
+.zap{position:fixed;z-index:45;right:16px;bottom:calc(18px + env(safe-area-inset-bottom));width:54px;height:54px;border-radius:50%;border:0;padding:0;display:grid;place-items:center;background:var(--luz);color:var(--destaque-texto);box-shadow:0 10px 28px -8px rgba(0,0,0,.6),0 0 0 6px rgba(212,175,95,.16);opacity:0;transform:scale(.6);pointer-events:none;transition:opacity .3s,transform .4s var(--ease),background-color .25s}
+.zap .ic{width:26px;height:26px}
+.zap.is-on{opacity:1;transform:none;pointer-events:auto}
+.zap:hover{background:#E2C37E}
+.zap:active{transform:scale(.94)}
 body{padding-bottom:0}
-@media (max-width:899px){.rodape{padding-bottom:calc(88px + env(safe-area-inset-bottom))}}
 @media (min-width:900px){
-  .barra{display:none}
+  .zap{right:28px;bottom:28px;width:58px;height:58px}
   .hero__titulo{font-size:clamp(120px,10vw,156px)}
   .imoveis h2,.sobre h2,.caminho h2,.contato h2{font-size:84px}
   .faixa{grid-template-columns:1fr auto;padding:34px 40px;margin-top:40px}
   .faixa p{font-size:32px}
   .sobre__texto p:not(.sobre__nota):not(.eyebrow){font-size:32px}
 }
-@media (prefers-reduced-motion:reduce){.barra{transition:none}}
+@media (prefers-reduced-motion:reduce){.zap{transition:none}}
