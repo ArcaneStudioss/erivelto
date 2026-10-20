@@ -19,7 +19,8 @@
     const poucoDado = navigator.connection && (navigator.connection.saveData || /(^|-)2g$/.test(navigator.connection.effectiveType || ''));
     if (reduzir || poucoDado) { v.remove(); return; }
     // O vídeo é um passeio único (fachada, hall, sala, terraço): toca uma vez e para no terraço.
-    v.src = innerWidth >= 900 ? 'video/hero-1080.mp4?v=1' : 'video/hero-720.mp4?v=1';
+    const retrato = matchMedia('(orientation: portrait)').matches; // celular em pé: vídeo vertical próprio, sem recorte
+    v.src = retrato ? 'video/hero-m.mp4?v=2' : innerWidth >= 900 ? 'video/hero-1080.mp4?v=2' : 'video/hero-720.mp4?v=2';
     const ic = bt && bt.querySelector('use');
     let fim = false;
     const rotulo = estado => { // 'toca' | 'pausa' | 'fim'

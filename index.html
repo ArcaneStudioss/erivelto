@@ -13,7 +13,8 @@
 <meta property="og:image" content="og-image.jpg">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preload" href="fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" as="image" href="img/hero-poster.webp" fetchpriority="high">
+<link rel="preload" as="image" href="img/hero-poster-m.webp" media="(orientation: portrait)" fetchpriority="high">
+<link rel="preload" as="image" href="img/hero-poster.webp" media="(orientation: landscape)" fetchpriority="high">
 <link rel="stylesheet" href="css/site.css?v=1">
 <link rel="stylesheet" href="css/arcane-ui.css?v=2">
 <link rel="stylesheet" href="css/arcane-motion.css?v=2">
@@ -39,8 +40,8 @@
 <main id="conteudo">
 <section class="hero" id="inicio" aria-label="Apresentação">
   <div class="hero__palco">
-    <img class="hero__poster" src="img/hero-poster.webp" width="1280" height="720" alt="Fachada de casa moderna ao entardecer, com a porta de madeira aberta e a luz do hall acesa" fetchpriority="high">
-    <video class="hero__video" muted playsinline preload="auto" poster="img/hero-poster.webp" aria-hidden="true" tabindex="-1"></video>
+    <picture><source media="(orientation: portrait)" srcset="img/hero-poster-m.webp"><img class="hero__poster" src="img/hero-poster.webp" width="1600" height="900" alt="Fachada de casa moderna ao entardecer, com a porta de madeira aberta e a luz do hall acesa" fetchpriority="high"></picture>
+    <video class="hero__video" muted playsinline preload="auto" aria-hidden="true" tabindex="-1"></video>
     <div class="hero__veu" aria-hidden="true"></div>
     <div class="hero__texto">
       <p class="hero__selo">Corretor de imóveis</p>
