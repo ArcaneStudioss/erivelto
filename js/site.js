@@ -1,5 +1,5 @@
 /* Erivelto Santos · hero com vídeo contínuo e janela de contato.
-   Vídeo sem som, em loop; com movimento reduzido ou economia de dados fica só a foto de capa. */
+   Vídeo sem som, toca uma vez; com movimento reduzido ou economia de dados fica só a foto de capa. */
 (() => {
   'use strict';
   const d = document;
@@ -18,14 +18,30 @@
     const reduzir = matchMedia('(prefers-reduced-motion: reduce)').matches;
     const poucoDado = navigator.connection && (navigator.connection.saveData || /(^|-)2g$/.test(navigator.connection.effectiveType || ''));
     if (reduzir || poucoDado) { v.remove(); return; }
+    // O vídeo é um passeio único (fachada, hall, sala, terraço): toca uma vez e para no terraço.
+    v.src = innerWidth >= 900 ? 'video/hero-1080.mp4?v=1' : 'video/hero-720.mp4?v=1';
     const ic = bt && bt.querySelector('use');
-    const rotulo = tocando => { if (!bt) return; bt.setAttribute('aria-pressed', tocando ? 'false' : 'true'); bt.setAttribute('aria-label', tocando ? 'Pausar vídeo' : 'Tocar vídeo'); ic.setAttribute('href', tocando ? '#i-pause' : '#i-play'); };
-    v.addEventListener('playing', () => { sec.classList.add('is-tocando'); if (bt) bt.hidden = false; rotulo(true); });
+    let fim = false;
+    const rotulo = estado => { // 'toca' | 'pausa' | 'fim'
+      if (!bt) return;
+      bt.setAttribute('aria-pressed', estado === 'pausa' ? 'true' : 'false');
+      bt.setAttribute('aria-label', estado === 'toca' ? 'Pausar vídeo' : estado === 'fim' ? 'Rever o passeio' : 'Tocar vídeo');
+      ic.setAttribute('href', estado === 'toca' ? '#i-pause' : '#i-play');
+    };
     const tentar = () => { const p = v.play(); if (p && p.catch) p.catch(() => {}); };
+    v.addEventListener('playing', () => { sec.classList.add('is-tocando'); if (bt) bt.hidden = false; fim = false; rotulo('toca'); });
+    v.addEventListener('ended', () => { fim = true; rotulo('fim'); });
     tentar();
-    if (bt) bt.addEventListener('click', () => { if (v.paused) { tentar(); rotulo(true); } else { v.pause(); rotulo(false); } });
-    // só toca com o hero na tela (poupa bateria)
-    new IntersectionObserver(es => { if (bt && bt.getAttribute('aria-pressed') === 'true') return; es[0].isIntersecting ? tentar() : v.pause(); }, { threshold: .1 }).observe(sec);
+    if (bt) bt.addEventListener('click', () => {
+      if (fim) { v.currentTime = 0; tentar(); }
+      else if (v.paused) { tentar(); }
+      else { v.pause(); rotulo('pausa'); }
+    });
+    // só toca com o hero na tela (poupa bateria); pausa manual é respeitada
+    new IntersectionObserver(es => {
+      if (fim || (bt && bt.getAttribute('aria-pressed') === 'true')) return;
+      es[0].isIntersecting ? tentar() : v.pause();
+    }, { threshold: .1 }).observe(sec);
   }
 
   function initConversa() {

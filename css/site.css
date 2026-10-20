@@ -100,7 +100,8 @@ section{scroll-margin-top:64px}
 @keyframes pulso{70%{box-shadow:0 0 0 10px rgba(212,175,95,0)}100%{box-shadow:0 0 0 0 rgba(212,175,95,0)}}
 .contato__acoes{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
 
-.rodape{padding:36px var(--pad) calc(36px + env(safe-area-inset-bottom));border-top:1px solid var(--linha)}
+.rodape{padding:36px var(--pad) calc(36px + env(safe-area-inset-bottom));border-top:1px solid var(--linha);display:grid;gap:14px}
+.rodape__aviso{color:var(--grafite);font-size:14px;max-width:60ch}
 .marca--rodape .marca__nome{font-size:13px}
 
 /* ---- janela de conversa (modal) ---- */
@@ -158,6 +159,8 @@ section{scroll-margin-top:64px}
   .contato{padding:200px var(--pad)}
   .contato__in{display:grid;grid-template-columns:1fr 440px;gap:64px;align-items:end}
   .contato__cartao{margin-top:0;padding:28px}
+  .rodape{grid-template-columns:auto 1fr;align-items:center;gap:40px}
+  .rodape__aviso{justify-self:end;text-align:right}
   .conversa{width:480px;margin:auto;border-radius:24px}
   .conversa__in{border-radius:24px;padding:36px}
 }
