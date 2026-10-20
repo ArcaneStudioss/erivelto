@@ -4,18 +4,31 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Erivelto Santos · Corretor de Imóveis</title>
-<meta name="description" content="Erivelto Santos, corretor de imóveis. Casas para comprar e atendimento pessoal da primeira visita à entrega das chaves.">
+<meta name="description" content="Compra, venda e avaliação de imóveis com o corretor Erivelto Santos. Atendimento pessoal da primeira visita à entrega das chaves.">
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#0B1B38">
+<link rel="canonical" href="https://erivelto.arcanestudios.io/">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Erivelto Santos · Corretor de Imóveis">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:url" content="https://erivelto.arcanestudios.io/">
 <meta property="og:title" content="Erivelto Santos · Corretor de Imóveis">
-<meta property="og:description" content="Casas para comprar e atendimento pessoal da primeira visita à entrega das chaves.">
-<meta property="og:image" content="og-image.jpg">
+<meta property="og:description" content="Compra, venda e avaliação de imóveis. Atendimento pessoal da primeira visita à entrega das chaves.">
+<meta property="og:image" content="https://erivelto.arcanestudios.io/og-image.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Erivelto Santos, corretor de imóveis: fachada de casa moderna com a porta de madeira aberta ao entardecer">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Erivelto Santos · Corretor de Imóveis">
+<meta name="twitter:description" content="Compra, venda e avaliação de imóveis. Atendimento pessoal da primeira visita à entrega das chaves.">
+<meta name="twitter:image" content="https://erivelto.arcanestudios.io/og-image.jpg">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preload" href="fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/instrument-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" href="img/hero-poster-m.webp" media="(orientation: portrait)" fetchpriority="high">
 <link rel="preload" as="image" href="img/hero-poster.webp" media="(orientation: landscape)" fetchpriority="high">
-<link rel="stylesheet" href="css/site.css?v=1">
+<link rel="stylesheet" href="css/site.css?v=2">
 <link rel="stylesheet" href="css/arcane-ui.css?v=2">
 <link rel="stylesheet" href="css/arcane-motion.css?v=2">
 </head>
@@ -45,12 +58,13 @@
     <div class="hero__veu" aria-hidden="true"></div>
     <div class="hero__texto">
       <p class="hero__selo">Corretor de imóveis</p>
-      <h1 class="hero__titulo"><span>Erivelto</span> <span>Santos</span></h1>
+      <h1 class="hero__titulo"><span>Erivelto</span> <span class="it">Santos</span></h1>
       <p class="hero__sub">A casa certa, com alguém ao seu lado da primeira visita até a chave na mão.</p>
       <div class="hero__acoes">
         <a class="btn btn--luz" href="#imoveis">Ver imóveis <svg class="ic"><use href="#i-arrow-down"/></svg></a>
         <button class="btn btn--vidro" type="button" data-abrir-conversa>Falar comigo</button>
       </div>
+      <ul class="hero__tags" aria-label="Serviços"><li>Comprar</li><li>Vender</li><li>Avaliar</li></ul>
     </div>
     <button class="hero__pausa" type="button" aria-label="Pausar vídeo" aria-pressed="false" hidden><svg class="ic"><use href="#i-pause"/></svg></button>
   </div>
@@ -58,7 +72,8 @@
 
 <section class="imoveis" id="imoveis">
   <div class="imoveis__topo">
-    <h2 data-split>Casas para você conhecer.</h2>
+    <div><p class="eyebrow" data-reveal>01 · Imóveis</p>
+    <h2 data-split>Casas para você conhecer.</h2></div>
     <p data-reveal>Cada imóvel tem visita marcada com o Erivelto, sem pressa e sem compromisso. Valores e detalhes você recebe pelo WhatsApp.</p>
   </div>
   <ul class="cards" data-stagger>
@@ -67,11 +82,13 @@
     <li class="card card--c"><img src="img/imovel-2.webp" alt="Casa de esquina com pergolado, jardim e palmeiras sob céu azul" loading="lazy" width="1200" height="764"><div class="card__info"><p class="card__tag">Casa de esquina</p><h3>Casa com pergolado e jardim</h3><button class="card__bt" type="button" data-interesse="Casa com pergolado e jardim">Quero saber mais <svg class="ic"><use href="#i-arrow-right"/></svg></button></div></li>
     <li class="card card--d"><img src="img/imovel-4.webp" alt="Casa térrea clara com garagem de madeira e detalhe em pedra" loading="lazy" width="1200" height="885"><div class="card__info"><p class="card__tag">Casa térrea</p><h3>Casa com garagem e detalhe em pedra</h3><button class="card__bt" type="button" data-interesse="Casa com garagem e detalhe em pedra">Quero saber mais <svg class="ic"><use href="#i-arrow-right"/></svg></button></div></li>
   </ul>
+  <div class="faixa" data-reveal><p>Procura algo diferente? Conta o que você quer e o Erivelto busca para você.</p><button class="btn btn--vidro" type="button" data-abrir-conversa>Pedir uma busca <svg class="ic"><use href="#i-arrow-right"/></svg></button></div>
 </section>
 
 <section class="sobre" id="sobre">
   <div class="sobre__foto" data-reveal><img src="img/erivelto.webp" alt="Erivelto Santos, corretor de imóveis, de braços cruzados diante da placa do escritório" loading="lazy" width="640" height="640"></div>
   <div class="sobre__texto">
+    <p class="eyebrow" data-reveal>02 · Quem atende</p>
     <h2 data-split>Quem atende você.</h2>
     <p data-reveal>Você fala direto com o Erivelto, do primeiro contato até a entrega das chaves. Ele mostra o imóvel, explica cada etapa e acompanha a papelada para você não se perder.</p>
     <p data-reveal class="sobre__nota">Compra, venda e avaliação de imóveis.</p>
@@ -80,6 +97,7 @@
 </section>
 
 <section class="caminho" id="caminho">
+  <p class="eyebrow" data-reveal>03 · Como funciona</p>
   <h2 data-split>Do primeiro contato à chave na mão.</h2>
   <ol class="etapas" data-stagger>
     <li><span class="etapa__n">1</span><h3>Conversa</h3><p>Você conta o que procura: tamanho, bairro, orçamento e prazo.</p></li>
@@ -91,6 +109,7 @@
 
 <section class="contato" id="contato">
   <div class="contato__in" data-reveal>
+    <p class="eyebrow">04 · Contato</p>
     <h2>Vamos achar a sua casa?</h2>
     <div class="contato__cartao">
       <p class="contato__estado"><span class="pulso" aria-hidden="true"></span>Atendimento pelo WhatsApp</p>
@@ -107,6 +126,8 @@
   <p class="marca marca--rodape"><span class="marca__es" aria-hidden="true">ES</span><span class="marca__nome">Erivelto Santos · Corretor de Imóveis</span></p>
   <p class="rodape__aviso">A casa do vídeo de abertura é uma ilustração criada por IA, não é um imóvel à venda.</p>
 </footer>
+
+<div class="barra" aria-hidden="true"><button class="btn btn--luz" type="button" data-whats tabindex="-1">Falar no WhatsApp</button><button class="btn btn--vidro" type="button" data-abrir-conversa tabindex="-1">Pedir contato</button></div>
 
 <dialog class="conversa" id="conversa" aria-labelledby="conversa-t">
   <form class="conversa__in" method="dialog" novalidate>
@@ -127,6 +148,6 @@
 </dialog>
 
 <script src="js/arcane-ui.js?v=2" defer></script>
-<script src="js/site.js?v=1" defer></script>
+<script src="js/site.js?v=2" defer></script>
 </body>
 </html>

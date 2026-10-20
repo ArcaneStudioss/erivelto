@@ -12,6 +12,10 @@
   const topo = d.getElementById('topo'), hero = d.querySelector('.hero__palco');
   if (topo && hero) new IntersectionObserver(es => topo.classList.toggle('is-solido', !es[0].isIntersecting), { rootMargin: '-80px 0px 0px 0px' }).observe(hero);
 
+  // barra de contato fixa no celular, depois que o hero sai da tela
+  const barra = d.querySelector('.barra'), heroSec = d.querySelector('.hero');
+  if (barra && heroSec) new IntersectionObserver(es => { barra.classList.toggle('is-on', !es[0].isIntersecting); barra.setAttribute('aria-hidden', es[0].isIntersecting ? 'true' : 'false'); barra.querySelectorAll('button').forEach(b => b.tabIndex = es[0].isIntersecting ? -1 : 0); }, { threshold: .05 }).observe(heroSec);
+
   function initHero() {
     const sec = d.querySelector('.hero'), v = d.querySelector('.hero__video'), bt = d.querySelector('.hero__pausa');
     if (!sec || !v) return;
