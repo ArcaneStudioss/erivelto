@@ -79,7 +79,7 @@
       topo.classList.toggle('topo--sombra', y > 8);
       const dy = y - ultimo;
       if (Math.abs(dy) > 8 || y <= 8) {              // só reage a movimento de verdade (histerese)
-        topo.classList.toggle('topo--oculto', dy > 0 && y > 240 && !d.querySelector('.menu.aberto'));
+        topo.classList.toggle('topo--oculto', fino.matches && dy > 0 && y > 240 && !d.querySelector('.menu.aberto'));
         ultimo = y;
       }
     }

@@ -22,7 +22,7 @@
   color-scheme:light;
 }
 *{box-sizing:border-box;margin:0}
-html{overscroll-behavior-y:none;overflow-anchor:none}
+html{overflow-anchor:none;-webkit-text-size-adjust:100%}
 body{background:var(--pedra);color:var(--tinta);font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip}
 img{display:block;max-width:100%;height:auto}
 a{color:inherit}
@@ -100,7 +100,7 @@ section{scroll-margin-top:72px}
 .projetos,.servicos,.caminho,.quem,.duvidas,.contato{padding:88px var(--pad)}
 h2{font-size:clamp(44px,12vw,72px);max-width:14ch}
 .projetos__topo p{margin-top:22px;max-width:44ch;color:var(--grafite)}
-.galeria{list-style:none;padding:0 var(--pad);margin:44px calc(var(--pad) * -1) 0;display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 var(--pad);scrollbar-width:none;overscroll-behavior-x:contain}
+.galeria{list-style:none;padding:0 var(--pad);margin:44px calc(var(--pad) * -1) 0;display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x proximity;scroll-padding:0 var(--pad);scrollbar-width:none;touch-action:pan-x pan-y}
 .galeria::-webkit-scrollbar{display:none}
 .galeria__item{position:relative;flex:0 0 76vw;scroll-snap-align:start;border-radius:var(--raio);overflow:hidden;background:var(--marmore);box-shadow:var(--sombra)}
 .galeria__item img{width:100%;aspect-ratio:3/4;object-fit:cover;transition:transform 1.4s var(--ease)}
@@ -127,16 +127,17 @@ h2{font-size:clamp(44px,12vw,72px);max-width:14ch}
 .etapas h3{font-size:28px;margin-top:6px}
 .etapas p{margin-top:4px;color:var(--branco-2);max-width:40ch}
 
-/* ---- quem atende: ônix com aro dourado e texto branco ---- */
-.quem{position:relative;margin:0 10px;border-radius:32px;background:radial-gradient(90% 80% at 0 100%,rgba(201,162,74,.3),transparent 65%),var(--onix);color:var(--branco);display:grid;gap:40px;overflow:hidden;isolation:isolate}
-.quem__retrato{width:min(280px,72vw);aspect-ratio:1;border-radius:50%;padding:8px;background:var(--ouro-grad);box-shadow:0 0 0 12px rgba(255,255,255,.08),0 0 0 26px rgba(255,255,255,.04),0 30px 60px -20px rgba(0,0,0,.6)}
+/* ---- quem atende: champanhe com dourado e texto escuro ---- */
+.quem{position:relative;margin:0 10px;border-radius:32px;background:radial-gradient(90% 70% at 100% 0,rgba(239,213,146,.45),transparent 62%),radial-gradient(90% 80% at 0 100%,rgba(201,162,74,.3),transparent 65%),#EFE5D2;box-shadow:inset 0 0 0 1px rgba(201,162,74,.35);color:var(--tinta);display:grid;gap:40px;overflow:hidden;isolation:isolate}
+.quem__foto{display:grid;justify-content:center}
+.quem__retrato{width:min(280px,72vw);aspect-ratio:1;border-radius:50%;padding:8px;background:var(--ouro-grad);box-shadow:0 0 0 12px rgba(252,250,245,.6),0 0 0 26px rgba(252,250,245,.3),0 30px 60px -20px rgba(80,60,20,.45)}
 .quem__retrato img{width:100%;height:100%;object-fit:cover;border-radius:50%}
 .quem__monograma{width:min(260px,68vw);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 30% 25%,#F6E4C8,var(--ouro) 55%,#B9844A);box-shadow:0 0 0 10px rgba(251,250,247,.08),0 0 0 22px rgba(251,250,247,.05),0 30px 60px -20px rgba(0,0,0,.45)}
 .quem__monograma span{font-family:var(--serif);font-weight:300;font-size:min(28vw,112px);letter-spacing:.04em;color:var(--onix);line-height:1}
-.quem h2 em{color:var(--ouro-claro)}
-.quem__texto p{margin-top:22px;max-width:40ch;font-family:var(--serif);font-size:25px;line-height:1.35;color:var(--branco-2)}
-.quem .link-fino{margin-top:22px;padding:0 18px;border-radius:999px;background:var(--ouro-card);color:var(--branco);border:1px solid rgba(255,255,255,.25)}
-.quem .link-fino:hover{background:var(--branco);color:var(--ouro-texto)}
+.quem h2 em{color:var(--ouro-texto)}
+.quem__texto p{margin-top:22px;max-width:40ch;font-family:var(--serif);font-size:25px;line-height:1.35;color:var(--tinta)}
+.quem .link-fino{margin-top:22px;padding:0 18px;border-radius:999px;background:#FCFAF5;color:var(--ouro-texto);border:1px solid rgba(201,162,74,.4)}
+.quem .link-fino:hover{background:var(--onix);color:var(--ouro-claro)}
 
 /* ---- dúvidas: cartões que abrem ---- */
 .faq{margin-top:40px;display:grid;gap:10px}
@@ -160,7 +161,7 @@ h2{font-size:clamp(44px,12vw,72px);max-width:14ch}
 .contato .btn--tinta:hover{background:var(--onix);color:var(--ouro-claro)}
 .contato .btn--linha{color:var(--branco);border-color:rgba(255,255,255,.6);background:transparent}
 .contato .btn--linha:hover{background:var(--marmore);border-color:var(--marmore);color:var(--tinta)}
-.contato :focus-visible,.servicos :focus-visible,.quem :focus-visible{outline-color:var(--branco)}
+.contato :focus-visible,.servicos :focus-visible{outline-color:var(--branco)}
 .faq :focus-visible,.etapas :focus-visible{outline-color:var(--ouro-texto)}
 
 .rodape{margin:0 10px;padding:30px var(--pad) calc(96px + env(safe-area-inset-bottom));background:var(--onix);color:rgba(251,250,247,.72);border-top:1px solid rgba(251,250,247,.12);display:grid;gap:18px}
@@ -171,8 +172,8 @@ h2{font-size:clamp(44px,12vw,72px);max-width:14ch}
 .rodape__links a:hover{color:var(--ouro)}
 
 /* ---- WhatsApp fixo: aparece depois do hero ---- */
-.zap{position:fixed;z-index:45;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));min-height:54px;padding:0 22px 0 8px;border-radius:999px;border:0;display:inline-flex;align-items:center;gap:12px;background:var(--tinta);color:var(--marmore);font-size:12px;letter-spacing:.16em;text-transform:uppercase;box-shadow:0 16px 36px -12px rgba(28,29,31,.6);opacity:0;transform:translateY(14px) scale(.96);pointer-events:none;transition:opacity .35s,transform .5s var(--ease),background-color .3s}
-.zap .ic{width:38px;height:38px;padding:8px;border-radius:50%;background:var(--ouro-grad);color:var(--onix)}
+.zap{position:fixed;z-index:45;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));width:58px;height:58px;min-height:0;padding:0;justify-content:center;border-radius:999px;border:0;display:inline-flex;align-items:center;gap:0;background:var(--tinta);color:var(--marmore);font-size:12px;letter-spacing:.16em;text-transform:uppercase;box-shadow:0 16px 36px -12px rgba(28,29,31,.6);opacity:0;transform:translateY(14px) scale(.96);pointer-events:none;transition:opacity .35s,transform .5s var(--ease),background-color .3s}
+.zap .ic{width:46px;height:46px;padding:10px;border-radius:50%;background:var(--ouro-grad);color:var(--onix)}
 .zap.is-on{opacity:1;transform:none;pointer-events:auto}
 .zap:hover{background:var(--onix-2)}
 .zap:active{transform:scale(.96)}
