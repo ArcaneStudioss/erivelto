@@ -11,7 +11,10 @@
      Dourado tem 3 tons: --ouro (enfeite e fundo), --ouro-claro (texto sobre ônix), --ouro-texto (texto sobre marfim, contraste AA). */
   --pedra:#F6F2EA; --marmore:#FCFAF5; --champanhe:#EFE5D2; --tinta:#17150F; --papel:#F6F2EA; --grafite:#5B574F;
   --onix:#16140F; --onix-2:#25211A; --linha:rgba(23,21,15,.12);
-  --ouro:#C9A24A; --ouro-grad:linear-gradient(135deg,#EFD592 0,#C9A24A 52%,#A8832F 100%); --ouro-claro:#E7C981; --ouro-texto:#83621C; --ouro-escuro:#6B4F15;
+  --ouro:#C9A24A; --ouro-grad:linear-gradient(135deg,#EFD592 0,#C9A24A 52%,#A8832F 100%);
+  /* fundo dos cartões: dourado mais fechado para o texto branco ter contraste (4,4 a 7,7:1) */
+  --ouro-card:linear-gradient(150deg,#A9802F 0,#8C6421 48%,#6E4C15 100%); --branco:#FFFFFF; --branco-2:rgba(255,255,255,.86);
+  --card-sombra:0 22px 44px -26px rgba(90,62,15,.75),inset 0 1px 0 rgba(255,255,255,.28); --ouro-claro:#E7C981; --ouro-texto:#83621C; --ouro-escuro:#6B4F15;
   --destaque:#C9A24A; --destaque-texto:#16140F;
   --raio:28px; --raio-p:18px; --ease:cubic-bezier(.22,1,.36,1); --ease-out:cubic-bezier(.22,1,.36,1);
   --pad:20px; --serif:Cormorant,'Cormorant Garamond',Georgia,serif; --sans:Jost,'Futura',system-ui,sans-serif;
@@ -110,54 +113,55 @@ h2{font-size:clamp(44px,12vw,72px);max-width:14ch}
 .servicos::after{content:"";position:absolute;width:420px;height:420px;left:-160px;bottom:-200px;border-radius:50%;background:var(--ouro);opacity:.22;filter:blur(70px);z-index:-1}
 .servicos h2 em{color:var(--ouro-claro)}
 .indice{list-style:none;padding:0;margin-top:40px;display:grid;gap:12px}
-.indice button{width:100%;display:grid;grid-template-columns:1fr auto;gap:6px 16px;align-items:center;padding:24px;border-radius:24px;border:1px solid rgba(231,201,129,.18);background:rgba(251,250,247,.05);text-align:left;transition:background-color .35s,transform .45s var(--ease),border-color .35s}
+.indice button{width:100%;display:grid;grid-template-columns:1fr auto;gap:6px 16px;align-items:center;padding:24px;border-radius:24px;border:1px solid rgba(255,255,255,.22);background:var(--ouro-card);color:var(--branco);box-shadow:var(--card-sombra);text-align:left;transition:transform .45s var(--ease),box-shadow .45s var(--ease),filter .35s}
 .indice__nome{font-family:var(--serif);font-size:42px;line-height:1}
-.indice__txt{grid-column:1/-1;grid-row:2;color:rgba(251,250,247,.75);max-width:46ch;font-size:16px}
-.indice__ic{grid-column:2;grid-row:1;display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:var(--ouro-grad);color:var(--onix);transition:transform .45s var(--ease)}
-.indice button:hover{background:rgba(231,201,129,.1);border-color:rgba(231,201,129,.45);transform:translateY(-3px)}
+.indice__txt{grid-column:1/-1;grid-row:2;color:var(--branco-2);max-width:46ch;font-size:16px}
+.indice__ic{grid-column:2;grid-row:1;display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:var(--branco);color:var(--ouro-texto);transition:transform .45s var(--ease)}
+.indice button:hover{filter:brightness(1.08);transform:translateY(-3px);box-shadow:0 30px 54px -26px rgba(90,62,15,.85),inset 0 1px 0 rgba(255,255,255,.35)}
 .indice button:hover .indice__ic{transform:rotate(45deg)}
 
-/* ---- como funciona: etapas em cartões com número em círculo dourado ---- */
+/* ---- como funciona: cartões dourados, número em círculo branco ---- */
 .etapas{list-style:none;padding:0;margin-top:40px;display:grid;gap:12px}
-.etapas li{display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:start;padding:22px;border-radius:24px;background:var(--marmore);box-shadow:0 1px 0 rgba(28,29,31,.04),0 18px 40px -30px rgba(40,30,10,.4)}
-.etapa__n{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;font-family:var(--serif);font-style:italic;font-size:22px;line-height:1;background:var(--champanhe);color:var(--ouro-texto)}
-.etapas li:nth-child(4) .etapa__n{background:var(--ouro-grad);color:var(--onix)}
+.etapas li{display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:start;padding:22px;border-radius:24px;background:var(--ouro-card);color:var(--branco);border:1px solid rgba(255,255,255,.22);box-shadow:var(--card-sombra)}
+.etapa__n{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;font-family:var(--serif);font-style:italic;font-size:22px;line-height:1;background:var(--branco);color:var(--ouro-texto)}
 .etapas h3{font-size:28px;margin-top:6px}
-.etapas p{margin-top:4px;color:var(--grafite);max-width:40ch}
+.etapas p{margin-top:4px;color:var(--branco-2);max-width:40ch}
 
-/* ---- quem atende: fundo champanhe ---- */
-.quem{position:relative;margin:0 10px;border-radius:32px;background:radial-gradient(90% 80% at 0 100%,rgba(201,162,74,.28),transparent 65%),var(--champanhe);color:var(--tinta);display:grid;gap:40px;overflow:hidden;isolation:isolate}
-.quem__retrato{width:min(280px,72vw);aspect-ratio:1;border-radius:50%;padding:8px;background:var(--ouro-grad);box-shadow:0 0 0 12px rgba(252,250,245,.6),0 0 0 26px rgba(252,250,245,.3),0 30px 60px -20px rgba(80,60,20,.45)}
+/* ---- quem atende: ônix com aro dourado e texto branco ---- */
+.quem{position:relative;margin:0 10px;border-radius:32px;background:radial-gradient(90% 80% at 0 100%,rgba(201,162,74,.3),transparent 65%),var(--onix);color:var(--branco);display:grid;gap:40px;overflow:hidden;isolation:isolate}
+.quem__retrato{width:min(280px,72vw);aspect-ratio:1;border-radius:50%;padding:8px;background:var(--ouro-grad);box-shadow:0 0 0 12px rgba(255,255,255,.08),0 0 0 26px rgba(255,255,255,.04),0 30px 60px -20px rgba(0,0,0,.6)}
 .quem__retrato img{width:100%;height:100%;object-fit:cover;border-radius:50%}
 .quem__monograma{width:min(260px,68vw);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 30% 25%,#F6E4C8,var(--ouro) 55%,#B9844A);box-shadow:0 0 0 10px rgba(251,250,247,.08),0 0 0 22px rgba(251,250,247,.05),0 30px 60px -20px rgba(0,0,0,.45)}
 .quem__monograma span{font-family:var(--serif);font-weight:300;font-size:min(28vw,112px);letter-spacing:.04em;color:var(--onix);line-height:1}
-.quem h2 em{color:var(--ouro-texto)}
-.quem__texto p{margin-top:22px;max-width:40ch;font-family:var(--serif);font-size:25px;line-height:1.35;color:var(--tinta)}
-.quem .link-fino{margin-top:22px;padding:0 18px;border-radius:999px;background:var(--marmore);color:var(--ouro-texto)}
-.quem .link-fino:hover{background:var(--onix);color:var(--ouro-claro)}
+.quem h2 em{color:var(--ouro-claro)}
+.quem__texto p{margin-top:22px;max-width:40ch;font-family:var(--serif);font-size:25px;line-height:1.35;color:var(--branco-2)}
+.quem .link-fino{margin-top:22px;padding:0 18px;border-radius:999px;background:var(--ouro-card);color:var(--branco);border:1px solid rgba(255,255,255,.25)}
+.quem .link-fino:hover{background:var(--branco);color:var(--ouro-texto)}
 
 /* ---- dúvidas: cartões que abrem ---- */
 .faq{margin-top:40px;display:grid;gap:10px}
-.faq details{border-radius:22px;background:var(--marmore);box-shadow:0 14px 34px -28px rgba(40,30,10,.45);transition:background-color .3s}
-.faq details[open]{background:#fff}
+.faq details{border-radius:22px;background:var(--ouro-card);color:var(--branco);border:1px solid rgba(255,255,255,.22);box-shadow:var(--card-sombra);transition:filter .3s}
+.faq details[open]{filter:brightness(1.04)}
 .faq summary{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:72px;padding:16px 20px 16px 22px;font-family:var(--serif);font-size:23px;line-height:1.2}
-.faq summary::after{display:grid;place-items:center;flex:none;width:38px;height:38px;border-radius:50%;background:var(--champanhe);color:var(--ouro-texto);font-family:var(--sans);font-weight:300;font-size:24px} /* o + vem do arcane-motion */
-.faq details[open] summary::after{background:var(--ouro-texto);color:var(--marmore)}
-.faq summary:hover{color:var(--ouro-texto)}
-.faq details p{padding:0 22px 22px;max-width:58ch;color:var(--grafite)}
+.faq summary::after{display:grid;place-items:center;flex:none;width:38px;height:38px;border-radius:50%;background:var(--branco);color:var(--ouro-texto);font-family:var(--sans);font-weight:300;font-size:24px} /* o + vem do arcane-motion */
+.faq details[open] summary::after{background:var(--onix);color:var(--ouro-claro)}
+.faq summary:hover{color:var(--branco)}
+.faq details p{padding:0 22px 22px;max-width:58ch;color:var(--branco-2)}
 
 /* ---- contato: ônix com luz dourada ---- */
 .contato{position:relative;margin:0 10px;border-radius:32px 32px 0 0;background:radial-gradient(80% 90% at 100% 100%,rgba(201,162,74,.34),transparent 60%),radial-gradient(60% 60% at 0 0,rgba(231,201,129,.12),transparent 70%),var(--onix);color:var(--marmore);overflow:hidden}
 .contato h2{max-width:12ch}
 .contato h2 em{color:var(--ouro-claro)}
-.contato__cartao{margin-top:32px;padding:24px;border-radius:26px;background:rgba(251,250,247,.05);border:1px solid rgba(231,201,129,.28)}
-.promessa{font-family:var(--serif);font-size:24px;line-height:1.3;color:var(--ouro-claro)}
-.contato__area{margin-top:8px;color:rgba(251,250,247,.75);font-size:15px}
+.contato__cartao{margin-top:32px;padding:24px;border-radius:26px;background:var(--ouro-card);border:1px solid rgba(255,255,255,.25);box-shadow:var(--card-sombra)}
+.promessa{font-family:var(--serif);font-size:24px;line-height:1.3;color:var(--branco)}
+.contato__area{margin-top:8px;color:var(--branco-2);font-size:15px}
 .contato__acoes{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
-.contato .btn--tinta:hover{background:var(--marmore);color:var(--onix)}
-.contato .btn--linha{color:var(--marmore);border-color:rgba(251,250,247,.45);background:transparent}
+.contato .btn--tinta{background:var(--branco);color:var(--ouro-escuro);box-shadow:0 12px 26px -14px rgba(0,0,0,.5)}
+.contato .btn--tinta:hover{background:var(--onix);color:var(--ouro-claro)}
+.contato .btn--linha{color:var(--branco);border-color:rgba(255,255,255,.6);background:transparent}
 .contato .btn--linha:hover{background:var(--marmore);border-color:var(--marmore);color:var(--tinta)}
-.contato :focus-visible{outline-color:var(--ouro)}
+.contato :focus-visible,.servicos :focus-visible,.quem :focus-visible{outline-color:var(--branco)}
+.faq :focus-visible,.etapas :focus-visible{outline-color:var(--ouro-texto)}
 
 .rodape{margin:0 10px;padding:30px var(--pad) calc(96px + env(safe-area-inset-bottom));background:var(--onix);color:rgba(251,250,247,.72);border-top:1px solid rgba(251,250,247,.12);display:grid;gap:18px}
 .rodape .marca__op{width:34px;height:34px;font-size:14px}

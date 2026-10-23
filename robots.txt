@@ -1,4 +1,4 @@
 # Protótipo em aprovação: tudo fora do Google. Ao publicar, trocar por Allow: / e Disallow: /obrigado/
 User-agent: *
 Disallow: /
-Sitemap: https://olavo.arcanestudios.io/sitemap.xml
+Sitemap: https://erivelto.arcanestudios.io/sitemap.xml
