@@ -13,17 +13,17 @@
   initConversa();
   // botões de WhatsApp direto (também na página de obrigado, que não tem a janela)
   d.querySelectorAll('[data-whats]').forEach(b => b.addEventListener('click', () => {
-    const [chave] = comNumero();
-    if (chave) abreZap(chave, `Olá, ${PESSOAS[chave].nome}! Vim pelo site de vocês.`);
-    else window.Arcane && Arcane.toast('O WhatsApp ainda será ligado neste botão.', { tipo: 'info' });
+    const chave = b.dataset.com || comNumero()[0], p = PESSOAS[chave];
+    if (p && p.num) abreZap(chave, `Olá, ${p.nome}! Vim pelo site de vocês.`);
+    else window.Arcane && Arcane.toast(`O WhatsApp ${p ? 'do ' + p.nome + ' ' : ''}ainda será ligado neste botão.`, { tipo: 'info' });
   }));
 
   const topo = d.getElementById('topo'), hero = d.querySelector('.hero');
   if (topo && hero) new IntersectionObserver(es => topo.classList.toggle('is-solido', !es[0].isIntersecting), { rootMargin: '-80px 0px 0px 0px' }).observe(hero);
 
   // botão de WhatsApp no canto: aparece depois que o hero sai da tela
-  const zap = d.querySelector('.zap'), heroSec = d.querySelector('.hero');
-  if (zap && heroSec) new IntersectionObserver(es => { const fora = !es[0].isIntersecting; zap.classList.toggle('is-on', fora); zap.setAttribute('aria-hidden', fora ? 'false' : 'true'); zap.tabIndex = fora ? 0 : -1; }, { threshold: .05 }).observe(heroSec);
+  const zaps = d.querySelector('.zaps'), heroSec = d.querySelector('.hero');
+  if (zaps && heroSec) new IntersectionObserver(es => { const fora = !es[0].isIntersecting; zaps.classList.toggle('is-on', fora); zaps.setAttribute('aria-hidden', fora ? 'false' : 'true'); zaps.querySelectorAll('.zap').forEach(z => { z.tabIndex = fora ? 0 : -1; }); }, { threshold: .05 }).observe(heroSec);
 
   // links de âncora: rolagem suave só no clique (nada de scroll-behavior global, que faz a página "voltar sozinha" no celular)
   const sem = matchMedia('(prefers-reduced-motion: reduce)').matches;
