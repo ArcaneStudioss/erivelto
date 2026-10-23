@@ -9,12 +9,12 @@
 :root{
   /* Paleta única do Olavo: marfim (fundos), ônix (seções escuras e texto) e dourado (o destaque).
      Dourado tem 3 tons: --ouro (enfeite e fundo), --ouro-claro (texto sobre ônix), --ouro-texto (texto sobre marfim, contraste AA). */
-  --pedra:#F6F2EA; --marmore:#FCFAF5; --champanhe:#EFE5D2; --tinta:#17150F; --papel:#F6F2EA; --grafite:#5B574F;
+  --pedra:#F6F2EA; --marmore:#FCFAF5; --champanhe:#F4E6DE; --tinta:#17150F; --papel:#F6F2EA; --grafite:#5B574F;
   --onix:#16140F; --onix-2:#25211A; --linha:rgba(23,21,15,.12);
-  --ouro:#C9A24A; --ouro-grad:linear-gradient(135deg,#EFD592 0,#C9A24A 52%,#A8832F 100%);
+  --ouro:#C9A24A; --ouro-grad:linear-gradient(135deg,#F1D9A2 0,#DDAA92 52%,#C48782 100%);
   /* fundo dos cartões: dourado mais fechado para o texto branco ter contraste (4,4 a 7,7:1) */
-  --ouro-card:linear-gradient(150deg,#A9802F 0,#8C6421 48%,#6E4C15 100%); --branco:#FFFFFF; --branco-2:rgba(255,255,255,.86);
-  --card-sombra:0 22px 44px -26px rgba(90,62,15,.75),inset 0 1px 0 rgba(255,255,255,.28); --ouro-claro:#E7C981; --ouro-texto:#83621C; --ouro-escuro:#6B4F15;
+  --ouro-card:linear-gradient(150deg,#B26F74 0,#A25B66 50%,#8C4A57 100%); --branco:#FFFFFF; --branco-2:rgba(255,255,255,.86);
+  --card-sombra:0 22px 44px -26px rgba(110,45,60,.7),inset 0 1px 0 rgba(255,255,255,.28); --ouro-claro:#E7C981; --ouro-texto:#8A4A4F; --ouro-escuro:#6E3640; --rosa:#E9C4BA; --rosa-claro:#F5CFC4; --rosa-ouro:#C98F86;
   --destaque:#C9A24A; --destaque-texto:#16140F;
   --raio:28px; --raio-p:18px; --ease:cubic-bezier(.22,1,.36,1); --ease-out:cubic-bezier(.22,1,.36,1);
   --pad:20px; --serif:Cormorant,'Cormorant Garamond',Georgia,serif; --sans:Jost,'Futura',system-ui,sans-serif;
@@ -44,11 +44,11 @@ section{scroll-margin-top:72px}
 .btn:hover .ic{transform:translateX(4px)}
 .btn--tinta{background:var(--ouro-grad);background-origin:border-box;border:0;color:var(--onix);font-weight:500;box-shadow:0 14px 28px -14px rgba(150,110,30,.85),inset 0 1px 0 rgba(255,255,255,.35)}
 .btn--tinta:hover{background:var(--onix);color:var(--ouro-claro);box-shadow:0 16px 30px -14px rgba(22,20,15,.7)}
-.btn--linha{border-color:rgba(131,98,28,.45);background:rgba(252,250,245,.6)}
+.btn--linha{border-color:rgba(138,74,79,.45);background:rgba(252,250,245,.6)}
 .btn--linha:hover{background:var(--marmore);border-color:var(--ouro-texto);color:var(--ouro-texto)}
 .link-fino{display:inline-flex;align-items:center;gap:.5em;min-height:44px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--ouro-texto);transition:gap .3s var(--ease),color .25s}
 .link-fino:hover{gap:.9em;color:var(--tinta)}
-.eyebrow,.hero__selo{display:inline-flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-weight:400;color:var(--ouro-texto);padding:8px 14px;border-radius:999px;background:rgba(201,162,74,.09)}
+.eyebrow,.hero__selo{display:inline-flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-weight:400;color:var(--ouro-texto);padding:8px 14px;border-radius:999px;background:rgba(214,140,140,.13)}
 
 /* ---- topo: vira uma pílula de vidro ao rolar ---- */
 .topo{position:fixed;top:10px;left:10px;right:10px;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:16px;height:60px;padding:0 10px 0 12px;border-radius:999px;color:var(--marmore);transition:background-color .4s,color .4s,box-shadow .4s}
@@ -114,8 +114,8 @@ h2{font-size:clamp(44px,12vw,72px);max-width:14ch}
 .projetos__acoes{margin-top:36px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 28px}
 
 /* ---- serviços: fundo ônix com luz dourada, cartões arredondados ---- */
-.servicos{position:relative;margin:0 10px;border-radius:32px;background:radial-gradient(90% 70% at 0 0,rgba(239,213,146,.45),transparent 62%),radial-gradient(90% 80% at 100% 100%,rgba(201,162,74,.3),transparent 65%),var(--champanhe);box-shadow:inset 0 0 0 1px rgba(201,162,74,.35);color:var(--tinta);overflow:hidden;isolation:isolate}
-.servicos::after{content:"";position:absolute;width:420px;height:420px;left:-160px;bottom:-200px;border-radius:50%;background:var(--ouro);opacity:.22;filter:blur(70px);z-index:-1}
+.servicos{position:relative;margin:0 10px;border-radius:32px;background:radial-gradient(90% 70% at 0 0,rgba(239,213,146,.45),transparent 62%),radial-gradient(90% 80% at 100% 100%,rgba(222,150,150,.34),transparent 65%),var(--champanhe);box-shadow:inset 0 0 0 1px rgba(201,162,74,.35);color:var(--tinta);overflow:hidden;isolation:isolate}
+.servicos::after{content:"";position:absolute;width:420px;height:420px;left:-160px;bottom:-200px;border-radius:50%;background:#E3A3A3;opacity:.3;filter:blur(70px);z-index:-1}
 .servicos h2 em{color:var(--ouro-texto)}
 .indice{list-style:none;padding:0;margin-top:40px;display:grid;gap:12px}
 .indice button{width:100%;display:grid;grid-template-columns:1fr auto;gap:6px 16px;align-items:center;padding:24px;border-radius:24px;border:1px solid rgba(255,255,255,.22);background:var(--ouro-card);color:var(--branco);box-shadow:var(--card-sombra);text-align:left;transition:transform .45s var(--ease),box-shadow .45s var(--ease),filter .35s}
@@ -133,7 +133,7 @@ h2{font-size:clamp(44px,12vw,72px);max-width:14ch}
 .etapas p{margin-top:4px;color:var(--branco-2);max-width:40ch}
 
 /* ---- quem atende: champanhe com dourado e texto escuro ---- */
-.quem{position:relative;margin:0 10px;border-radius:32px;background:radial-gradient(90% 70% at 100% 0,rgba(239,213,146,.45),transparent 62%),radial-gradient(90% 80% at 0 100%,rgba(201,162,74,.3),transparent 65%),#EFE5D2;box-shadow:inset 0 0 0 1px rgba(201,162,74,.35);color:var(--tinta);display:grid;gap:40px;overflow:hidden;isolation:isolate}
+.quem{position:relative;margin:0 10px;border-radius:32px;background:radial-gradient(90% 70% at 100% 0,rgba(239,213,146,.45),transparent 62%),radial-gradient(90% 80% at 0 100%,rgba(222,150,150,.34),transparent 65%),var(--champanhe);box-shadow:inset 0 0 0 1px rgba(201,130,130,.3);color:var(--tinta);display:grid;gap:40px;overflow:hidden;isolation:isolate}
 .quem__foto{display:grid;justify-content:center}
 .quem__retrato{width:min(280px,72vw);aspect-ratio:1;border-radius:50%;padding:8px;background:var(--ouro-grad);box-shadow:0 0 0 12px rgba(252,250,245,.6),0 0 0 26px rgba(252,250,245,.3),0 30px 60px -20px rgba(80,60,20,.45)}
 .quem__foto--dupla{grid-template-columns:1fr 1fr;gap:14px;justify-items:center;align-items:start}
@@ -161,7 +161,7 @@ h2{font-size:clamp(44px,12vw,72px);max-width:14ch}
 .faq details p{padding:0 22px 22px;max-width:58ch;color:var(--branco-2)}
 
 /* ---- contato: ônix com luz dourada ---- */
-.contato{position:relative;margin:0 10px;border-radius:32px 32px 0 0;background:radial-gradient(90% 70% at 100% 0,rgba(239,213,146,.45),transparent 62%),radial-gradient(90% 80% at 0 100%,rgba(201,162,74,.3),transparent 65%),var(--champanhe);box-shadow:inset 0 0 0 1px rgba(201,162,74,.35);color:var(--tinta);overflow:hidden}
+.contato{position:relative;margin:0 10px;border-radius:32px 32px 0 0;background:radial-gradient(90% 70% at 100% 0,rgba(239,213,146,.45),transparent 62%),radial-gradient(90% 80% at 0 100%,rgba(222,150,150,.34),transparent 65%),var(--champanhe);box-shadow:inset 0 0 0 1px rgba(201,162,74,.35);color:var(--tinta);overflow:hidden}
 .contato h2{max-width:12ch}
 .contato h2 em{color:var(--ouro-texto)}
 .contato__cartao{margin-top:32px;padding:24px;border-radius:26px;background:var(--ouro-card);border:1px solid rgba(255,255,255,.25);box-shadow:var(--card-sombra)}
@@ -231,7 +231,7 @@ h2{font-size:clamp(44px,12vw,72px);max-width:14ch}
   .topo .marca__nome{display:inline}
   .menu{display:flex;gap:6px;font-size:12px;letter-spacing:.18em;text-transform:uppercase}
   .menu a{text-decoration:none;padding:10px 14px;border-radius:999px;opacity:.8;transition:opacity .2s,background-color .25s,color .2s}
-  .menu a:hover{opacity:1;background:rgba(201,162,74,.1);color:var(--ouro-texto)}
+  .menu a:hover{opacity:1;background:rgba(214,140,140,.14);color:var(--ouro-texto)}
   .topo__cta{min-height:46px;padding:0 22px}
 
   /* hero no PC: texto à esquerda, o vídeo numa janela arredondada à direita, com luz do céu e do sol atrás */
@@ -240,13 +240,13 @@ h2{font-size:clamp(44px,12vw,72px);max-width:14ch}
   .hero>.brilho--ceu{width:560px;height:560px;right:4%;top:-120px;background:var(--ouro-claro);opacity:.35}
   .hero>.brilho--luz{width:440px;height:440px;left:-120px;bottom:-160px;background:var(--ouro);opacity:.22}
   .hero>.hero__texto{position:relative;max-width:640px}
-  .hero__selo{color:var(--ouro-texto);background:rgba(201,162,74,.1);-webkit-backdrop-filter:none;backdrop-filter:none}
+  .hero__selo{color:var(--ouro-texto);background:rgba(214,140,140,.14);-webkit-backdrop-filter:none;backdrop-filter:none}
   .so-pc{display:inline}
   .hero__titulo{font-size:clamp(112px,10.5vw,176px)}
   .hero__titulo .it{color:var(--ouro-texto)}
   .hero__sub{font-size:19px;color:var(--grafite);opacity:1;max-width:34ch;margin-top:26px}
   .hero__acoes{margin-top:36px}
-  .hero .btn--linha{color:var(--tinta);border-color:rgba(131,98,28,.45);background:rgba(252,250,245,.6)}
+  .hero .btn--linha{color:var(--tinta);border-color:rgba(138,74,79,.45);background:rgba(252,250,245,.6)}
   .hero .btn--linha:hover{background:var(--marmore);border-color:var(--ouro-texto);color:var(--ouro-texto)}
   .hero>.hero__janela{position:relative;inset:auto;justify-self:center;width:min(100%,calc((100svh - 240px) * .5625))}
   .hero__quadro{position:relative;inset:auto;aspect-ratio:9/16;border-radius:36px;outline:1px solid rgba(201,162,74,.35);outline-offset:14px;box-shadow:0 50px 90px -40px rgba(22,20,15,.55),0 0 0 8px rgba(251,250,247,.7)}
@@ -347,3 +347,36 @@ html :focus-visible{border-radius:12px}
 html .btn:focus-visible,html .zap:focus-visible,html .hero__pausa:focus-visible,html .conversa__x:focus-visible,html .link-fino:focus-visible,html .menu a:focus-visible,html .marca:focus-visible{border-radius:999px}
 html .indice button:focus-visible{border-radius:24px}
 html .faq summary:focus-visible{border-radius:22px}
+
+
+/* ---- toque feminino: rosé champanhe junto do dourado; Aline com o mesmo peso do Olavo ---- */
+.hero__titulo .it{color:var(--rosa-claro)}
+.hero__titulo .it::first-letter{font-size:1.12em;line-height:.8}
+.hero__selo{color:var(--rosa-claro)}
+.hero__selo::before{background:var(--rosa-ouro)}
+.faixa-viva .marquee__trilho span::after{background:var(--rosa-ouro)}
+.faixa-viva .marquee__trilho span:nth-child(3n+2){color:var(--rosa-ouro)}
+.casa__dados li{background:var(--champanhe);box-shadow:inset 0 0 0 1px rgba(201,130,130,.4)}
+/* retratos em arco, iguais para os dois */
+.quem__retrato{border-radius:999px 999px 28px 28px;aspect-ratio:4/5;background:linear-gradient(160deg,#F1D9A2,#DDAA92 55%,#C48782)}
+.quem__retrato img{border-radius:999px 999px 22px 22px}
+.quem__foto--dupla .quem__retrato{box-shadow:0 0 0 8px rgba(255,250,248,.7),0 18px 36px -16px rgba(110,45,60,.4)}
+.quem__pessoa span{color:var(--ouro-texto)}
+.quem .link-fino{border-color:rgba(201,130,130,.45)}
+.zap--aline,.zap[data-com=aline]{background:linear-gradient(135deg,#F5CFC4,#D99A94 55%,#B7686E)}
+.zap__ic{box-shadow:0 0 0 2px var(--champanhe)}
+::selection{background:var(--rosa);color:var(--tinta)}
+.opcoes input:checked+span{background:var(--ouro-texto)}
+.campo input:focus{box-shadow:0 0 0 4px rgba(214,140,140,.2)}
+@media (min-width:960px){
+  .hero{background:linear-gradient(180deg,#F8F2EE,#F6E7E0)}
+  .hero>.brilho--luz{background:#E8A9A9;opacity:.3}
+  .hero>.brilho--ceu{background:#F2D9B0;opacity:.35}
+  .hero__titulo .it{color:var(--ouro-texto)}
+  .hero__selo{color:var(--ouro-texto)}
+  .quem__foto--dupla .quem__retrato{width:min(210px,100%)}
+  .menu a:hover{background:rgba(214,140,140,.14)}
+}
+/* as fotos já vêm recortadas em círculo: o zoom esconde o canto branco dentro do arco */
+.quem__retrato,.quem__foto--dupla .quem__retrato{padding:0;border:7px solid transparent;background-origin:border-box;overflow:hidden}
+.quem__retrato img{height:100%;object-fit:cover;object-position:50% 30%;transform:scale(1.34);transform-origin:50% 12%;border-radius:0}
