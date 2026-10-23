@@ -1,17 +1,21 @@
-/* Olavo Taygoro · hero com o tour em vídeo e janela de contato.
+/* Olavo Taygoro e Aline Santiago · hero com o tour em vídeo e janela de contato.
    Vídeo sem som, em laço; com movimento reduzido ou economia de dados fica só a foto de capa. */
 (() => {
   'use strict';
   const d = document;
   // Preencher com o número real (só dígitos, com 55 e DDD), ex.: '5551999999999'. Vazio = botão avisa que ainda não está ligado.
-  const WHATS = '';
+  // Olavo ainda sem número: enquanto estiver vazio, tudo vai para a Aline e a janela esconde a escolha "Falar com".
+  const PESSOAS = { olavo: { nome: 'Olavo', num: '' }, aline: { nome: 'Aline', num: '5521974323367' } };
+  const comNumero = () => Object.keys(PESSOAS).filter(k => PESSOAS[k].num);
+  const abreZap = (chave, texto) => { const p = PESSOAS[chave]; if (p && p.num) window.open(`https://wa.me/${p.num}?text=${encodeURIComponent(texto)}`, '_blank', 'noopener'); };
 
   initHero();
   initConversa();
   // botões de WhatsApp direto (também na página de obrigado, que não tem a janela)
   d.querySelectorAll('[data-whats]').forEach(b => b.addEventListener('click', () => {
-    if (WHATS) window.open(`https://wa.me/${WHATS}?text=${encodeURIComponent('Olá, Olavo! Vim pelo seu site.')}`, '_blank', 'noopener');
-    else window.Arcane && Arcane.toast('O WhatsApp do Olavo ainda será ligado neste botão.', { tipo: 'info' });
+    const [chave] = comNumero();
+    if (chave) abreZap(chave, `Olá, ${PESSOAS[chave].nome}! Vim pelo site de vocês.`);
+    else window.Arcane && Arcane.toast('O WhatsApp ainda será ligado neste botão.', { tipo: 'info' });
   }));
 
   const topo = d.getElementById('topo'), hero = d.querySelector('.hero');
@@ -87,8 +91,12 @@
     let yTrava = 0;
     const trava = () => { yTrava = scrollY; const s = d.body.style; s.position = 'fixed'; s.top = `-${yTrava}px`; s.left = '0'; s.right = '0'; };
     const solta = () => { const s = d.body.style; if (s.position !== 'fixed') return; s.position = s.top = s.left = s.right = ''; scrollTo({ top: yTrava, behavior: 'instant' }); };
+    const grupoCom = form.querySelector('[data-com-grupo]'), nomes = comNumero();
+    grupoCom.hidden = nomes.length < 2;
+    const escolheCom = chave => { const r = form.querySelector(`input[name=com][value="${chave}"]`); if (r && PESSOAS[chave].num) r.checked = true; };
     const abrir = (b, casa) => {
       origem = b; imovel = casa || ''; limpa();
+      escolheCom(b.dataset.com || nomes[0]);
       interesse.hidden = !imovel; interesse.textContent = imovel ? 'Imóvel: ' + imovel : '';
       if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
       trava();
@@ -115,10 +123,11 @@
       marca(form.nome, rn); marca(form.tel, rt);
       if (rn || rt) { (rn ? form.nome : form.tel).focus(); return; }
       const tipo = form.querySelector('input[name=tipo]:checked').value;
-      const msg = `Olá, Olavo! Meu nome é ${form.nome.value.trim()}. Quero ${tipo.toLowerCase()}.` + (imovel ? ` Imóvel: ${imovel}.` : '') + ` Meu WhatsApp: ${form.tel.value}.`;
+      const chave = nomes.length > 1 ? form.querySelector('input[name=com]:checked').value : nomes[0];
+      const msg = `Olá, ${PESSOAS[chave].nome}! Meu nome é ${form.nome.value.trim()}. Quero ${tipo.toLowerCase()}.` + (imovel ? ` Imóvel: ${imovel}.` : '') + ` Meu WhatsApp: ${form.tel.value}.`;
       fechar(); form.reset(); limpa();
       // abre o WhatsApp com a mensagem pronta e leva para a página de obrigado (onde o Analytics conta o contato)
-      if (WHATS) window.open(`https://wa.me/${WHATS}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
+      abreZap(chave, msg);
       location.href = '/obrigado/';
     });
   }
