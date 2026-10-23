@@ -380,3 +380,12 @@ html .faq summary:focus-visible{border-radius:22px}
 /* as fotos já vêm recortadas em círculo: o zoom esconde o canto branco dentro do arco */
 .quem__retrato,.quem__foto--dupla .quem__retrato{padding:0;border:7px solid transparent;background-origin:border-box;overflow:hidden}
 .quem__retrato img{height:100%;object-fit:cover;object-position:50% 30%;transform:scale(1.34);transform-origin:50% 12%;border-radius:0}
+/* botão de Instagram embaixo de cada foto */
+.quem__pessoa figcaption{display:grid;justify-items:center}
+.btn--insta{margin-top:14px;min-height:44px;padding:0 18px;font-size:11px;gap:.6em;background:var(--marmore);color:var(--ouro-texto);border:1px solid rgba(201,130,130,.5)}
+.btn--insta:hover{background:var(--ouro-texto);color:var(--marmore);border-color:var(--ouro-texto)}
+.quem__nota{display:block;margin-top:10px;max-width:22ch;font-style:normal;font-size:14px;line-height:1.4;color:var(--grafite)}
+@media (min-width:960px){.quem__nota{font-size:15px;max-width:24ch}}
+.quem__foto--dupla .quem__pessoa{align-content:start;align-self:stretch;grid-template-rows:auto 1fr}
+.quem__pessoa figcaption{display:flex;flex-direction:column;align-items:center;height:100%}
+.quem__nota{flex:1}

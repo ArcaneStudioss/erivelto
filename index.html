@@ -29,7 +29,7 @@
 <link rel="preload" href="fonts/cormorant.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/jost.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" href="img/hero-poster.webp" fetchpriority="high">
-<link rel="stylesheet" href="css/site.css?v=12">
+<link rel="stylesheet" href="css/site.css?v=14">
 <link rel="stylesheet" href="css/arcane-ui.css?v=2">
 <link rel="stylesheet" href="css/arcane-motion.css?v=2">
 <script type="application/ld+json">
@@ -42,6 +42,7 @@
 <symbol id="i-arrow-up-right" viewBox="0 0 256 256"><path d="M198,64V168a6,6,0,0,1-12,0V78.48L68.24,196.24a6,6,0,0,1-8.48-8.48L177.52,70H88a6,6,0,0,1,0-12H192A6,6,0,0,1,198,64Z"/></symbol>
 <symbol id="i-x" viewBox="0 0 256 256"><path d="M204.24,195.76a6,6,0,1,1-8.48,8.48L128,136.49,60.24,204.24a6,6,0,0,1-8.48-8.48L119.51,128,51.76,60.24a6,6,0,0,1,8.48-8.48L128,119.51l67.76-67.75a6,6,0,0,1,8.48,8.48L136.49,128Z"/></symbol>
 <symbol id="i-plus" viewBox="0 0 256 256"><path d="M222,128a6,6,0,0,1-6,6H134v82a6,6,0,0,1-12,0V134H40a6,6,0,0,1,0-12h82V40a6,6,0,0,1,12,0v82h82A6,6,0,0,1,222,128Z"/></symbol>
+<symbol id="i-insta" viewBox="0 0 256 256"><rect x="32" y="32" width="192" height="192" rx="52" fill="none" stroke="currentColor" stroke-width="14"/><circle cx="128" cy="128" r="42" fill="none" stroke="currentColor" stroke-width="14"/><circle cx="180" cy="76" r="9" fill="currentColor"/></symbol>
 <symbol id="i-whats" viewBox="0 0 256 256"><path d="M185.79,148.42l-32-16a6,6,0,0,0-6,.38l-16.64,11.1a42.38,42.38,0,0,1-19.05-19.05l11.1-16.64a6,6,0,0,0,.38-6l-16-32A6,6,0,0,0,102,66a34,34,0,0,0-34,34,90.1,90.1,0,0,0,90,90,34,34,0,0,0,34-34A6,6,0,0,0,185.79,148.42ZM158,178a78.09,78.09,0,0,1-78-78,22,22,0,0,1,17.53-21.55l12.21,24.42-11,16.47a6,6,0,0,0-.55,5.62,54.43,54.43,0,0,0,29.35,29.35,6,6,0,0,0,5.62-.55l16.47-11,24.42,12.21A22,22,0,0,1,158,178ZM128,26A102,102,0,0,0,38.35,176.69L26.68,211.72a14,14,0,0,0,17.7,17.7l35-11.67A102,102,0,1,0,128,26Zm0,192a90,90,0,0,1-45.06-12.08,6.09,6.09,0,0,0-3-.81,6.2,6.2,0,0,0-1.9.31L40.58,217.97a2,2,0,0,1-2.55-2.55L50.58,178a6,6,0,0,0-.5-4.91A90,90,0,1,1,128,218Z"/></symbol>
 <symbol id="i-pause" viewBox="0 0 256 256"><path d="M200,34H160a14,14,0,0,0-14,14V208a14,14,0,0,0,14,14h40a14,14,0,0,0,14-14V48A14,14,0,0,0,200,34Zm2,174a2,2,0,0,1-2,2H160a2,2,0,0,1-2-2V48a2,2,0,0,1,2-2h40a2,2,0,0,1,2,2ZM96,34H56A14,14,0,0,0,42,48V208a14,14,0,0,0,14,14H96a14,14,0,0,0,14-14V48A14,14,0,0,0,96,34Zm2,174a2,2,0,0,1-2,2H56a2,2,0,0,1-2-2V48a2,2,0,0,1,2-2H96a2,2,0,0,1,2,2Z"/></symbol>
 <symbol id="i-play" viewBox="0 0 256 256"><path d="M232.4,114.49,88.32,26.35a16,16,0,0,0-16.2-.3A15.86,15.86,0,0,0,64,39.87V216.13A15.94,15.94,0,0,0,80,232a16.07,16.07,0,0,0,8.36-2.35L232.4,141.51a15.81,15.81,0,0,0,0-27ZM80,215.94V40l143.83,88Z"/></symbol>
@@ -126,20 +127,16 @@
   <div class="quem__foto quem__foto--dupla" data-reveal>
     <figure class="quem__pessoa">
       <div class="quem__retrato"><img src="img/olavo-taygoro.webp" alt="Olavo Taygoro, corretor de imóveis, sorrindo de braços cruzados, de camisa branca" loading="lazy" width="640" height="640"></div>
-      <figcaption><strong>Olavo Taygoro</strong><span>Corretor de imóveis</span></figcaption>
+      <figcaption><strong>Olavo Taygoro</strong><span>Corretor de imóveis</span><em class="quem__nota">Grava o tour e mostra o imóvel pessoalmente.</em><a class="btn btn--insta" href="https://www.instagram.com/olavotpinheiro/" target="_blank" rel="noopener noreferrer" aria-label="Instagram do Olavo (abre em outra aba)"><svg class="ic"><use href="#i-insta"/></svg> Instagram</a></figcaption>
     </figure>
     <figure class="quem__pessoa">
       <div class="quem__retrato"><img src="img/aline-santiago.webp" alt="Aline Santiago, gerente de vendas, ao telefone, de blazer claro" loading="lazy" width="640" height="640"></div>
-      <figcaption><strong>Aline Santiago</strong><span>Gerente de Vendas</span></figcaption>
+      <figcaption><strong>Aline Santiago</strong><span>Gerente de Vendas</span><em class="quem__nota">Especialista em imóveis na Zona Sul, com 14 anos de mercado.</em><a class="btn btn--insta" href="https://www.instagram.com/santiagobrokers._/" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Aline (abre em outra aba)"><svg class="ic"><use href="#i-insta"/></svg> Instagram</a></figcaption>
     </figure>
   </div>
   <div class="quem__texto">
     <h2 id="quem-t" data-reveal>Quem atende são <em>o Olavo e a Aline.</em></h2>
-    <p data-reveal>Do primeiro contato até a entrega das chaves, você fala direto com quem acompanha o seu caso. O Olavo grava o tour e mostra o imóvel pessoalmente. A Aline é especialista em imóveis na Zona Sul e tem 14 anos de mercado. Os dois cuidam de cada etapa para você decidir com segurança.</p>
-    <div class="quem__links" data-reveal>
-      <a class="link-fino" href="https://www.instagram.com/olavotpinheiro/" target="_blank" rel="noopener noreferrer">@olavotpinheiro <svg class="ic"><use href="#i-arrow-up-right"/></svg></a>
-      <a class="link-fino" href="https://www.instagram.com/santiagobrokers._/" target="_blank" rel="noopener noreferrer">@santiagobrokers._ <svg class="ic"><use href="#i-arrow-up-right"/></svg></a>
-    </div>
+    <p data-reveal>Do primeiro contato até a entrega das chaves, você fala direto com quem acompanha o seu caso. Os dois cuidam de cada etapa para você decidir com segurança.</p>
   </div>
 </section>
 
