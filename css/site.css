@@ -79,7 +79,7 @@ section{scroll-margin-top:72px}
 .hero__titulo span{display:block}
 .hero__titulo .it{font-style:italic;padding-left:.5em;padding-bottom:.1em;color:var(--ouro-claro)}
 .hero__sub{margin-top:18px;max-width:32ch;font-size:17px;opacity:.92}
-.hero__acoes{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.hero__acoes{display:flex;flex-wrap:wrap;gap:10px;margin-top:54px}
 .hero .btn--linha{color:var(--marmore);border-color:rgba(251,250,247,.5);background:rgba(251,250,247,.08)}
 .hero .btn--linha:hover{background:var(--marmore);border-color:var(--marmore);color:var(--tinta)}
 .hero__pausa{position:absolute;z-index:4;right:var(--pad);top:88px;width:44px;height:44px;border-radius:50%;border:1px solid rgba(251,250,247,.4);background:rgba(22,20,15,.45);color:var(--marmore);display:grid;place-items:center}
